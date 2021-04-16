@@ -53,6 +53,7 @@ class SearchAPI extends Component{
 
       table.push(
         <tr key = {pokemonData.id}>
+          <td>Name: <strong>{name}</strong></td>
           <td>Height: {height}</td>
           <td>Weight: {weight}</td>
           <td>Experience: {experience}</td>
