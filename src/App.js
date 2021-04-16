@@ -48,7 +48,7 @@ class SearchAPI extends Component{
       let weight = pokemonData.weight;
       let experience = pokemonData.base_experience;
       let species = pokemonData.species.name;
-      let type = typesData;
+      let type = pokemonData.types.name;
       let abilities = pokemonData.abilities.name;
 
       table.push(
