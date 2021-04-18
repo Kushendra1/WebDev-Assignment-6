@@ -9,7 +9,7 @@ export const pokemonAttributes = ({ name, height, weight, abilities, types, spec
           <td>Weight: {weight}</td>
           <td>Experience: {experience}</td>
           <td>Species: {species}</td>
-          <td>Type: {type}</td>
+          <td>Type: {types}</td>
           <td>Abilities: {abilities}</td>
         </tr>
       </table>
