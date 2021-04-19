@@ -22,6 +22,7 @@ class SearchAPI extends Component{
 
     try{
       let response = await axios.get(linkToAPI);
+      console.log(response.data);
       this.setState({apiData: response.data, found: true});
     }
     catch (error){
@@ -37,6 +38,7 @@ class SearchAPI extends Component{
     let pokemonData = this.state.apiData;
     let foundResults = this.state.found;
     let typesData = [pokemonData.types];
+    console.log(typesData);
     let table = [];
 
     if(!foundResults){
@@ -48,8 +50,45 @@ class SearchAPI extends Component{
       let weight = pokemonData.weight;
       let experience = pokemonData.base_experience;
       let species = pokemonData.species.name;
-      let type = pokemonData.types.name;
-      let abilities = pokemonData.abilities.name;
+      let abilities = [];
+      let type = [];
+      if(pokemonData.types.length > 1){
+        for(let i = 0; i < pokemonData.types.length; i++){
+          let typeFill = pokemonData.types[i].type.name;
+          type.push(
+            typeFill
+          )
+          type.push(
+            " "
+          )
+        }
+      }
+      else{
+        let typeFill = pokemonData.types[0].type.name;
+        type.push(
+          typeFill
+        )
+      }
+      
+      if(pokemonData.abilities.length > 1){
+        for (let i = 0; i < pokemonData.abilities.length; i++){
+          let abilitiesFill = pokemonData.abilities[i].ability.name;
+          abilities.push(
+            abilitiesFill
+          )
+          abilities.push(
+            " "
+          )
+        }
+      }
+      else{
+        let abilitiesFill = pokemonData.abilities[0].ability.name;
+        abilities.push(
+          abilitiesFill
+        )
+      }
+      
+      
 
       table.push(
         <tr key = {pokemonData.id}>
