@@ -52,14 +52,37 @@ class SearchAPI extends Component{
       let species = pokemonData.species.name;
       let abilities = [];
       let type = [];
-      for(let i = 0; i < pokemonData.types.length; i++){
-        let typeFill = pokemonData.types[i].type.name;
+      if(pokemonData.types.length > 1){
+        for(let i = 0; i < pokemonData.types.length; i++){
+          let typeFill = pokemonData.types[i].type.name;
+          type.push(
+            typeFill
+          )
+          type.push(
+            " "
+          )
+        }
+      }
+      else{
+        let typeFill = pokemonData.types[0].type.name;
         type.push(
           typeFill
         )
       }
-      for (let i = 0; i < pokemonData.abilities.length; i++){
-        let abilitiesFill = pokemonData.abilities[i].ability.name;
+      
+      if(pokemonData.abilities.length > 1){
+        for (let i = 0; i < pokemonData.abilities.length; i++){
+          let abilitiesFill = pokemonData.abilities[i].ability.name;
+          abilities.push(
+            abilitiesFill
+          )
+          abilities.push(
+            " "
+          )
+        }
+      }
+      else{
+        let abilitiesFill = pokemonData.abilities[0].ability.name;
         abilities.push(
           abilitiesFill
         )
