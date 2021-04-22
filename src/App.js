@@ -8,16 +8,23 @@ class SearchAPI extends Component{
     this.state={
       apiData: [],
       pokemon: "",
-      found: false
+      found: false,
+        error:""
     }
   }
 
   handleChange = (event) => {
-    this.setState({pokemon: event.target.value});
+      this.setState({pokemon: event.target.value});
   }
 
   handleSearchClick = async () => {
-    let pokemonName = this.state.pokemon;
+      this.state.apiData=[];
+    if(this.state.error!=="") {
+        var lastElement = document.getElementById('P');
+        document.getElementById("results").removeChild(lastElement)
+        this.state.error="";
+    }
+    let pokemonName = this.state.pokemon.toLowerCase();
     let linkToAPI = 'https://pokeapi.co/api/v2/pokemon/' + pokemonName;
 
     try{
@@ -25,11 +32,18 @@ class SearchAPI extends Component{
       console.log(response.data);
       this.setState({apiData: response.data, found: true});
     }
-    catch (error){
-      if(error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
+    catch (err){
+      if(err.response){
+        console.log(err.response.data);
+        console.log(err.response.status);
         this.setState({found: false});
+          this.setState({error: err.response.data});
+
+          var para = document.createElement('P');
+          para.id = 'P'
+          para.innerHTML = 'Ooooppps ... character "' + this.state.pokemon + '" does not exist yet. Try sending it as ' +
+              'a recommendation to the pokemon creators!';
+          return document.getElementById("results").appendChild(para);
       }
     }
   }
@@ -50,6 +64,8 @@ class SearchAPI extends Component{
       let weight = pokemonData.weight;
       let experience = pokemonData.base_experience;
       let species = pokemonData.species.name;
+      let sprites = pokemonData.sprites.other.dream_world.front_default;
+      console.log(sprites);
       let abilities = [];
       let type = [];
       if(pokemonData.types.length > 1){
@@ -88,34 +104,83 @@ class SearchAPI extends Component{
         )
       }
       
-      
 
       table.push(
         <tr key = {pokemonData.id}>
-          <td>Name: <strong>{name}</strong></td>
-          <td>Height: {height}</td>
-          <td>Weight: {weight}</td>
-          <td>Experience: {experience}</td>
-          <td>Species: {species}</td>
-          <td>Type: {type}</td>
-          <td>Abilities: {abilities}</td>
+          <tr>
+            <div id="tableHeader"> Information about {name}: </div>
+              <br/>
+          </tr>
+            <tr>
+                <td>
+              <th>Name: </th>
+              <th><strong>{name}</strong></th>
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <th>Height: </th>
+                <th>{height}</th>
+              </td>
+            </tr>
+            <tr>
+                <td>
+                <th>Weight: </th>
+                <th>{weight}</th>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <th>Experience: </th>
+                <th>{experience}</th>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <th>Type: </th>
+                <th>{type}</th>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <th>Species: </th>
+                <th>{species}</th>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                <th>Abilities: </th>
+                <th>{abilities}</th>
+                </td>
+            </tr>
         </tr>
-      );
+
+
+    );
       return table;
     }
   }
 
   render(){
+    let img ='';
+    try{
+      if(this.state.apiData.sprites.other.dream_world.front_default!==undefined){
+        img =this.state.apiData.sprites.other.dream_world.front_default
+      }}catch(exception){
+      img='';
+    }
     return (
       <div className = 'container'>
         <div className = 'search'>
+            <div id='pic'>
+                <img src={img} width="350" height="400"></img>
+            </div>
           <h3>Pokemon Search</h3>
           <input type="text" value={this.state.pokemon} onChange = {this.handleChange} placeholder = 'Enter Pokemon Name!'></input>
-          <button className="search-button" onClick={this.handleSearchClick}>I Choose You!</button>
+          <button className="search-button" onClick={this.handleSearchClick}><span> I Choose You! </span></button>
         </div>
-        <br/>
         <h4>{this.state.pokemon.name}</h4>
-        <table id = "data">
+        <table id = "results">
           <tbody>
           {this.generateData()}
           </tbody>
