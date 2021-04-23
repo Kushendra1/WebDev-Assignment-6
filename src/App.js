@@ -162,7 +162,7 @@ class SearchAPI extends Component{
   }
 
   render(){
-    let img ='';
+    let img = 'logo512.png';
     try{
       if(this.state.apiData.sprites.other.dream_world.front_default!==undefined){
         img =this.state.apiData.sprites.other.dream_world.front_default
@@ -173,7 +173,7 @@ class SearchAPI extends Component{
       <div className = 'container'>
         <div className = 'search'>
             <div id='pic'>
-                <img src={img} width="350" height="400"></img>
+                <img src={img} width="350" height="400" ></img>
             </div>
           <h3>Pokemon Search</h3>
           <input type="text" value={this.state.pokemon} onChange = {this.handleChange} placeholder = 'Enter Pokemon Name!'></input>
