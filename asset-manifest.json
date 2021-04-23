@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/WebDev-Assignment-6/static/css/main.0cdb2ea5.chunk.css",
+    "main.js": "/WebDev-Assignment-6/static/js/main.7da03be0.chunk.js",
+    "main.js.map": "/WebDev-Assignment-6/static/js/main.7da03be0.chunk.js.map",
+    "runtime-main.js": "/WebDev-Assignment-6/static/js/runtime-main.4a24ec27.js",
+    "runtime-main.js.map": "/WebDev-Assignment-6/static/js/runtime-main.4a24ec27.js.map",
+    "static/js/2.1fb7c5e6.chunk.js": "/WebDev-Assignment-6/static/js/2.1fb7c5e6.chunk.js",
+    "static/js/2.1fb7c5e6.chunk.js.map": "/WebDev-Assignment-6/static/js/2.1fb7c5e6.chunk.js.map",
+    "static/js/3.5aa2d431.chunk.js": "/WebDev-Assignment-6/static/js/3.5aa2d431.chunk.js",
+    "static/js/3.5aa2d431.chunk.js.map": "/WebDev-Assignment-6/static/js/3.5aa2d431.chunk.js.map",
+    "index.html": "/WebDev-Assignment-6/index.html",
+    "static/css/main.0cdb2ea5.chunk.css.map": "/WebDev-Assignment-6/static/css/main.0cdb2ea5.chunk.css.map",
+    "static/js/2.1fb7c5e6.chunk.js.LICENSE.txt": "/WebDev-Assignment-6/static/js/2.1fb7c5e6.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/WebDev-Assignment-6/static/media/red-bg.b715d1a8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4a24ec27.js",
+    "static/js/2.1fb7c5e6.chunk.js",
+    "static/css/main.0cdb2ea5.chunk.css",
+    "static/js/main.7da03be0.chunk.js"
+  ]
+}
