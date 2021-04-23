@@ -162,7 +162,7 @@ class SearchAPI extends Component{
   }
 
   render(){
-    let img = 'logo512.png';
+    let img = '';
     try{
       if(this.state.apiData.sprites.other.dream_world.front_default!==undefined){
         img =this.state.apiData.sprites.other.dream_world.front_default
